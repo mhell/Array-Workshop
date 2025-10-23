@@ -70,7 +70,13 @@ public class NameRepository {
      * @return True if the fullName is added successfully; false if it already exists.
      */
     public static boolean add(final String fullName) {
-        //todo: PART 2: implement add method
+        /// Adding a new array
+        Arrays.sort(names);
+        if (Arrays.binarySearch(names, fullName) < 0) {
+            names = Arrays.copyOf(names,names.length+1);
+            names[names.length-1] = fullName;
+            return true;
+        }
         return false;
     }
 
