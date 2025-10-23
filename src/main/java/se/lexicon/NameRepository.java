@@ -157,6 +157,7 @@ public class NameRepository {
                 j++;
             }
         }
+        // if last element of ne array is empty, one name was removed
         boolean isRemoved = newArray[newArray.length-1] == null;
         // make length of newArray -1
         if (isRemoved) {
