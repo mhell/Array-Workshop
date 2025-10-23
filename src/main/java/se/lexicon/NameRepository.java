@@ -153,9 +153,9 @@ public class NameRepository {
                 j++;
             }
         }
-        // if last element of the array is empty, one name was removed
+        // if last element of the new array is empty, one name was removed
         boolean isRemoved = newArray[newArray.length-1] == null;
-        // make length of newArray -1
+        // make length of the new array -1
         if (isRemoved) {
             newArray = Arrays.copyOf(newArray, newArray.length-1);
         }
