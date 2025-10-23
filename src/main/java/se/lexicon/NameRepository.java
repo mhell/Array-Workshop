@@ -149,10 +149,12 @@ public class NameRepository {
         String[] newArray = new String[names.length];
         // copy all elements except "fullName"
         for (int i=0, j=0; i < names.length; i++) {
-            // if fullName (to remove) is not found
+            // if fullName (to remove) is not found, continue copying
             if (!names[i].equalsIgnoreCase(fullName)) {
+                // copy element
                 newArray[j] = names[i];
-                j++; // increment newArray index
+                // increment newArray index
+                j++;
             }
         }
         boolean isRemoved = newArray[newArray.length-1] == null;
@@ -162,7 +164,7 @@ public class NameRepository {
         }
         // update names
         setNames(newArray);
-        //
+        // return if removed or not
         return isRemoved;
     }
 
