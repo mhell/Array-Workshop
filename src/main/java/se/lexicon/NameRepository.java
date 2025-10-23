@@ -80,6 +80,17 @@ public class NameRepository {
         return false;
     }
 
+    private static String[] findByName(final String nameToFind, int pos) {
+        String[] foundNames = new String[0];
+        for (String name : names) {
+            //if (name.startsWith(firstName)) {
+            if (name.split(" ")[pos].equalsIgnoreCase(nameToFind)) {
+                foundNames = Arrays.copyOf(foundNames, foundNames.length+1);
+                foundNames[foundNames.length-1] = name;
+            }
+        }
+        return foundNames;
+    }
 
     /**
      * Find all names that match the given firstName.
@@ -88,15 +99,7 @@ public class NameRepository {
      * @return An array containing all matching names.
      */
     public static String[] findByFirstName(final String firstName) {
-        String[] foundNames = new String[0];
-        for (String name : names) {
-            //if (name.startsWith(firstName)) {
-            if (name.split(" ")[0].equalsIgnoreCase(firstName)) {
-                foundNames = Arrays.copyOf(foundNames, foundNames.length+1);
-                foundNames[foundNames.length-1] = name;
-            }
-        }
-        return foundNames;
+        return findByName(firstName, 0);
     }
 
 
@@ -107,14 +110,7 @@ public class NameRepository {
      * @return An array containing all matching names.
      */
     public static String[] findByLastName(final String lastName) {
-        String[] foundNames = new String[0];
-        for (String name : names) {
-            if (name.split(" ")[1].equalsIgnoreCase(lastName)) {
-                foundNames = Arrays.copyOf(foundNames, foundNames.length+1);
-                foundNames[foundNames.length-1] = name;
-            }
-        }
-        return foundNames;
+        return findByName(lastName, 1);
     }
 
 
@@ -157,7 +153,7 @@ public class NameRepository {
                 j++;
             }
         }
-        // if last element of ne array is empty, one name was removed
+        // if last element of the array is empty, one name was removed
         boolean isRemoved = newArray[newArray.length-1] == null;
         // make length of newArray -1
         if (isRemoved) {
@@ -188,12 +184,11 @@ public class NameRepository {
         }
 
         if (found) {
-            setNames(newArray); // ✅ Now we update the main array
+            setNames(newArray); // Now we update the main array
             return true;
         }
 
         return false; // Nothing was removed
     }
 */
-
 }
