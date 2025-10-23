@@ -145,9 +145,52 @@ public class NameRepository {
      * @return True if the name is removed successfully; false if the name is not found in the array.
      */
     public static boolean remove(final String fullName) {
-        //todo: PART 4: implement remove method
-        return false;
+        // create new array
+        String[] newArray = new String[names.length];
+        // copy all elements except "fullName"
+        for (int i=0, j=0; i < names.length; i++) {
+            // if fullName (to remove) is not found
+            if (!names[i].equalsIgnoreCase(fullName)) {
+                newArray[j] = names[i];
+                j++; // increment newArray index
+            }
+        }
+        boolean isRemoved = newArray[newArray.length-1] == null;
+        // make length of newArray -1
+        if (isRemoved) {
+            newArray = Arrays.copyOf(newArray, newArray.length-1);
+        }
+        // update names
+        setNames(newArray);
+        //
+        return isRemoved;
     }
 
+    /*
+    public void method() {
+        boolean found = false;
+
+        // Temporary array to hold updated names
+        String[] newArray = new String[0];
+
+        for (String name : names) {
+            if (!name.equalsIgnoreCase(fullName)) {
+                // Keep this name
+                newArray = Arrays.copyOf(newArray, newArray.length + 1);
+                newArray[newArray.length - 1] = name;
+            } else {
+                // We found the one to remove
+                found = true;
+            }
+        }
+
+        if (found) {
+            setNames(newArray); // ✅ Now we update the main array
+            return true;
+        }
+
+        return false; // Nothing was removed
+    }
+*/
 
 }
